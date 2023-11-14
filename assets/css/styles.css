@@ -7,7 +7,7 @@
 
   /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
-  --first-color: hsl(14, 98%, 50%);
+  --first-color: hsl(261, 100%, 27%);
   --black-color: hsl(0, 0%, 0%);
   --black-color-light: hsl(0, 0%, 40%);
   --white-color: hsl(0, 0%, 95%);
@@ -108,7 +108,7 @@ img {
 }
 /*========== Variables Dark theme ==========*/
 body.dark-theme {
-  --first-color: hsl(14, 80%, 50%);
+  --first-color: hsl(261, 100%, 27%);
   --black-color: hsl(0, 0%, 18%);
   --black-color-light: hsl(0, 0%, 30%);
   --title-color: hsl(0, 0%, 95%);
@@ -127,7 +127,7 @@ body.dark-theme {
 
 .dark-theme .section__title-1::after,
 .dark-theme .section__title-2::after {
-  background-color: hsla(14, 70%, 50%, 0.2);
+  background-color: hsla(261, 70%, 50%, 0.2);
 }
 
 .dark-theme :is(.home__arrow, .home__line, .about__line) {
@@ -137,7 +137,7 @@ body.dark-theme {
 .dark-theme .home__description b {
   background: linear-gradient(
     90deg,
-    hsla(14, 80%, 50%, 0.3),
+    hsla(261, 80%, 50%, 0.3),
     hsla(14, 80%, 50%, 0)
   );
 }
@@ -204,7 +204,7 @@ body.dark-theme {
   content: '';
   width: 40px;
   height: 28px;
-  background-color: hsla(14, 98%, 50%, 0.2);
+  background-color: hsla(261, 98%, 50%, 0.2);
   position: absolute;
   top: -4px;
   right: -8px;
@@ -268,7 +268,7 @@ body.dark-theme {
 .nav__toggle {
   width: 32px;
   height: 32px;
-  background-color: var(--black-color);
+  background-color: var(--first-color);
   color: var(--white-color);
   display: grid;
   place-items: center;
@@ -492,7 +492,7 @@ body.dark-theme {
 .home__description b {
   background: linear-gradient(
     90deg,
-    hsla(14, 98%, 50%, 0.3),
+    hsla(261, 98%, 50%, 0.3),
     hsla(14, 98%, 50%, 0)
   );
 }
@@ -969,6 +969,11 @@ body.dark-theme {
   cursor: pointer;
 }
 
+.contact__button:hover {
+  background-color: var(--text-color-light);
+  color: var(--first-color);
+}
+
 /* Opaque placeholder */
 .contact__input:focus::placeholder {
   opacity: 0;
@@ -1254,7 +1259,8 @@ body.dark-theme {
     padding: 1.1rem 1.5rem;
   }
   .nav__link-button:hover {
-    color: var(--white-color);
+    background-color: var(--first-color);
+    color: var(--white-color) !important;
   }
   .nav__link-button::after {
     background-color: transparent;
