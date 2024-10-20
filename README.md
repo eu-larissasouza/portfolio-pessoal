@@ -1,28 +1,27 @@
-# Portfolio Website
+# Portfolio Larissa Souza
 
-This is a portfolio website built with Next.js and Tailwind CSS. It showcases your skills, projects, and achievements in an elegant and responsive design.
+Esse é um portfolio construido utilizando Next.Js e Tailwind, espero que gostem!
 
-## Installation
+## Instalação
 
-1. Clone the repository: `git clone https://github.com/judygab/nextjs-portfolio.git`
-2. Navigate to the project directory: `cd portfolio-website`
-3. Install the dependencies: `npm install`
+1. Clone o repositorio: `git clone https://github.com/eu-larissasouza/portfolio-pessoal.git`
+2. Navegue até a pasta do projeto: `cd portfolio-pessoal`
+3. Instale as dependências: `npm install`
 
-## Usage
+## Como usar
 
-1. Start the development server: `npm run dev`
-2. Open your browser and visit `http://localhost:3000` to view the website.
+1. Inicie o servidor de desenvolvimento: `npm run dev`
+2. Abra o seu navegador e visite `http://localhost:3000` para ver o portfolio.
 
-## Dependencies
+## Dependências
 
-The following dependencies are required for this project:
-
-- Next.js: A React framework for server-side rendering and static site generation.
-- Tailwind CSS: A highly customizable CSS framework.
-- React: A JavaScript library for building user interfaces.
-- React Icons: A collection of popular icons for React projects.
-- TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
-- Resend: Resend is the email API for developers.
+As seguintes depen
+- Next.js: Um framework React para renderização do lado do servidor e geração de sites estáticos.
+- Tailwind CSS: Um framework CSS altamente customizável.
+- React: Uma biblioteca JavaScript para construir interfaces de usuário.
+- React Icons: Uma coleção de ícones populares para projetos React.
+- TypeScript: Um superset tipado de JavaScript que compila para JavaScript puro.
+- EmailJS: Estou usando o EmailJS para integrar o envio de e-mails diretamente do frontend, sem a necessidade de um servidor próprio.
 
 ## License
 
