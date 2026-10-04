@@ -1,95 +1,75 @@
-'use client'
-import React, { useTransition, useState } from 'react'
 import Image from 'next/image'
-import TabButton from './TabButton'
-
-const TAB_DATA = [
-  {
-    title: 'Habilidades',
-    id: 'skills',
-    content: (
-      <p>
-        #AnáliseDeDados #SQL #PL/SQL #Excel #HTML #CSS #JavaScript #React #Java
-      </p>
-    )
-  },
-  {
-    title: 'Educação',
-    id: 'education',
-    content: (
-      <ul className="list-disc pl-2">
-        <li>
-          IFSP - Ensino Médio e Técnico Integrado em Informática, 2019-2022
-        </li>
-        <li>
-          FIAP - Graduanda em Sistemas de Informação, cursando 3º semestre, com
-          previsão de conclusão para 07/2027
-        </li>
-      </ul>
-    )
-  }
-//   {
-//     title: 'Certificações',
-//     id: 'certifications',
-//     content: (
-//       <ul className="list-disc pl-2">
-//         <li>AWS Cloud Practitioner</li>
-//         <li>Google Professional Cloud Developer</li>
-//       </ul>
-//     )
-//   }
-]
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
 
 const AboutSection = () => {
-  const [tab, setTab] = useState('skills')
-  const [isPending, startTransition] = useTransition()
-
-  const handleTabChange = id => {
-    startTransition(() => {
-      setTab(id)
-    })
-  }
-
   return (
-    <section className="text-white" id="about">
-      <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <Image src="/images/about-image.png" width={500} height={500} />
-        <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-          <h2 className="text-4xl font-bold text-white mb-4">Sobre Mim</h2>
-          <p className="text-base lg:text-lg">
-            Apaixonada pela programação e desenvolvimento, enxergo a tecnologia
-            como ferramenta a ser acessível e utilizada para melhorar a
-            qualidade de vida das pessoas, pois acredito que diante de tantos
-            avanços tecnológicos, é essencial que todos possam ser contemplados
-            pelos benefícios da tecnologia e, sob estes valores, busco
-            oportunidades para desenvolver seus conhecimentos.
-          </p>
-          <div className="flex flex-row justify-start mt-8">
-            <TabButton
-              selectTab={() => handleTabChange('skills')}
-              active={tab === 'skills'}
-            >
-              {' '}
-              Habilidades{' '}
-            </TabButton>
-            <TabButton
-              selectTab={() => handleTabChange('education')}
-              active={tab === 'education'}
-            >
-              {' '}
-              Educação{' '}
-            </TabButton>
-{/*             <TabButton */}
-{/*               selectTab={() => handleTabChange('certifications')} */}
-{/*               active={tab === 'certifications'} */}
-{/*             > */}
-{/*               {' '} */}
-{/*               Certificações{' '} */}
-{/*             </TabButton> */}
-          </div>
-          <div className="mt-8">{TAB_DATA.find(t => t.id === tab).content}</div>
-        </div>
+    <section className="section about-section" id="sobre">
+      <div className="about-copy">
+        <p className="eyebrow">Sobre</p>
+        <h2>Código, palco e comunidade.</h2>
+        <p className="about-lead">
+          Sou Larissa Souza, mas todo mundo me chama de Lary. Trabalho com
+          engenharia backend em ecossistemas Java de alta escala, entregando
+          funcionalidades que atravessam vários microsserviços.
+        </p>
+        <p>
+          Fora do código, construo comunidade. Subo no palco para compartilhar o
+          que aprendi em produção e conversar sobre carreira, inclusão e
+          acessibilidade. Também escrevo conteúdo técnico para quem está
+          começando e para quem já está no meio da jornada.
+        </p>
+        <p>
+          Acredito na tecnologia como ferramenta para melhorar a vida das
+          pessoas e em comunidades fortes como parte essencial dessa construção.
+        </p>
       </div>
+      <aside className="about-aside">
+        <div className="portrait">
+          <div className="portrait-ring">
+            <Image
+              src="/images/lary/PERFIL.png"
+              alt="Retrato de Lary Souza sorrindo"
+              fill
+              sizes="108px"
+            />
+          </div>
+          <div>
+            <strong>Lary Souza</strong>
+            <span>Backend engineering + tech community</span>
+          </div>
+        </div>
+        <dl className="facts">
+          <div>
+            <dt>Base</dt>
+            <dd>São Paulo, Brasil</dd>
+          </div>
+          <div>
+            <dt>Foco</dt>
+            <dd>Engenharia backend</dd>
+          </div>
+          <div>
+            <dt>Stack</dt>
+            <dd>Java, Golang e Kotlin em sistemas de larga escala</dd>
+          </div>
+          <div>
+            <dt>Comunidade</dt>
+            <dd>Palestras, conexões e voluntariado</dd>
+          </div>
+          <div>
+            <dt>Idiomas</dt>
+            <dd>Português, espanhol intermediário e inglês técnico</dd>
+          </div>
+        </dl>
+        <a
+          className="button button-primary about-resume"
+          href="https://canva.link/s2hi55qkw20y1h3"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Acessar meu currículo
+          <ArrowTopRightOnSquareIcon aria-hidden="true" />
+        </a>
+      </aside>
     </section>
   )
 }

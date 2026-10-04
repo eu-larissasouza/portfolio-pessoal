@@ -1,6 +1,6 @@
-# Portfolio Larissa Souza
+# Portfólio Lary Souza
 
-Esse é um portfolio construido utilizando Next.Js e Tailwind, espero que gostem!
+Portfólio pessoal construído com Next.js, React e Tailwind CSS.
 
 ## Instalação
 
@@ -13,17 +13,12 @@ Esse é um portfolio construido utilizando Next.Js e Tailwind, espero que gostem
 1. Inicie o servidor de desenvolvimento: `npm run dev`
 2. Abra o seu navegador e visite `http://localhost:3000` para ver o portfolio.
 
-## Dependências
+## Stack
 
-As seguintes depen
-- Next.js: Um framework React para renderização do lado do servidor e geração de sites estáticos.
-- Tailwind CSS: Um framework CSS altamente customizável.
-- React: Uma biblioteca JavaScript para construir interfaces de usuário.
-- React Icons: Uma coleção de ícones populares para projetos React.
-- TypeScript: Um superset tipado de JavaScript que compila para JavaScript puro.
-- EmailJS: Estou usando o EmailJS para integrar o envio de e-mails diretamente do frontend, sem a necessidade de um servidor próprio.
+- Next.js 13 e React 18
+- Tailwind CSS 3
+- Heroicons
 
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Feel free to use, modify, and distribute the code as per the terms of the license.
-

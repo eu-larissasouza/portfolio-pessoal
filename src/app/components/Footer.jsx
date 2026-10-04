@@ -2,11 +2,10 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="footer border z-10 border-t-[#33353F] border-l-transparent border-r-transparent text-white">
-      <div className="container p-12 md:px-16 flex justify-between">
-        <p className="text-slate-600 text-white">
-          © Todos os Direitos Reservados a <strong>Larissa Souza</strong>.
-        </p>
+    <footer className="site-footer">
+      <div className="footer-inner">
+        <span>© {new Date().getFullYear()} Lary Souza</span>
+        <a href="#inicio">Voltar ao início ↑</a>
       </div>
     </footer>
   )
