@@ -23,6 +23,11 @@ const links = [
     label: 'E-mail',
     value: 'Vamos conversar',
     href: 'mailto:larissa.alves.souza@outlook.com'
+  },
+  {
+    label: 'Formulário de contato',
+    value: 'Fale comigo',
+    href: 'https://forms.gle/XwR1H4HrFyQ4HgHq7'
   }
 ]
 
