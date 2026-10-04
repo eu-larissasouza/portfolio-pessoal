@@ -7,7 +7,7 @@ const focusAreas = [
     icon: '/images/lary/microsservicos-noite.svg',
     color: 'orange',
     description:
-      'Java, Kotlin, Golang e sistemas reativos. Funcionalidades distribuídas com contratos claros, observabilidade e qualidade.'
+      'Atuando com backend em Java, Golang e Kotlin em sistemas de larga escala. Funcionalidades distribuídas com contratos claros, testes automatizados, observabilidade e qualidade.'
   },
   {
     number: '02',

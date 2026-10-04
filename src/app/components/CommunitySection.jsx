@@ -59,7 +59,7 @@ const moments = [
     description:
       'Participei do painel “Além da Sala de Aula: Como a Comunidade Tech Transforma a Jornada Universitária”, no Community Lounge do TDC São Paulo 2025.',
     topics: ['Comunidade tech', 'Universidade', 'Carreira'],
-    image: '/images/lary/TDC2025-Painel.jfif',
+    image: '/images/lary/TDC2025-Painel.jpg',
     alt: 'Lary Souza participando do painel no TDC São Paulo 2025',
     links: [
       {
@@ -142,7 +142,7 @@ const moments = [
     description:
       'No Palco Dev, apresentei palestrantes ao público, registrei fotos e vídeos e ajudei a acompanhar as transmissões ao vivo no canal da comunidade.',
     topics: ['Voluntariado', 'GDG São Paulo', 'Palco Dev'],
-    image: '/images/lary/PalcoDev-CampusParty.jfif',
+    image: '/images/lary/PalcoDev-CampusParty.jpg',
     alt: 'Lary Souza no Palco Dev durante a Campus Party 16',
     links: [
       {
