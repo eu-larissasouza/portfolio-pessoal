@@ -1,6 +1,7 @@
 import HeroSection from './components/HeroSection'
 import Navbar from './components/Navbar'
 import AboutSection from './components/AboutSection'
+import JourneySection from './components/JourneySection'
 import CommunitySection from './components/CommunitySection'
 import FocusSection from './components/FocusSection'
 import SocialSection from './components/SocialSection'
@@ -14,6 +15,7 @@ export default function Home() {
       <div className="page-content">
         <HeroSection />
         <AboutSection />
+        <JourneySection />
         <CommunitySection />
         <FocusSection />
         <SocialSection />

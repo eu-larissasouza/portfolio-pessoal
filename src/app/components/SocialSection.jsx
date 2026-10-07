@@ -1,33 +1,45 @@
+import Image from 'next/image'
+import {
+  ChatBubbleLeftRightIcon,
+  EnvelopeIcon
+} from '@heroicons/react/24/outline'
+
 const links = [
   {
     label: 'Instagram',
     value: '@_lary.souza._',
-    href: 'https://instagram.com/_lary.souza._'
+    href: 'https://instagram.com/_lary.souza._',
+    icon: '/instagram-icon.svg'
   },
   {
     label: 'LinkedIn',
     value: 'in/larissa-a-souza',
-    href: 'https://www.linkedin.com/in/larissa-a-souza/'
+    href: 'https://www.linkedin.com/in/larissa-a-souza/',
+    icon: '/linkedin-icon.svg'
   },
   {
     label: 'YouTube',
     value: '@lary.souzaa',
-    href: 'https://www.youtube.com/@lary.souzaa'
+    href: 'https://www.youtube.com/@lary.souzaa',
+    icon: '/youtube-icon.png'
   },
   {
     label: 'GitHub',
     value: 'eu-larissasouza',
-    href: 'https://github.com/eu-larissasouza'
+    href: 'https://github.com/eu-larissasouza',
+    icon: '/github-icon.svg'
   },
   {
     label: 'E-mail',
     value: 'Vamos conversar',
-    href: 'mailto:larissa.alves.souza@outlook.com'
+    href: 'mailto:larissa.alves.souza@outlook.com',
+    icon: EnvelopeIcon
   },
   {
     label: 'Fale comigo',
     value: 'Vamos construir algo incrível juntos?',
-    href: 'https://forms.gle/XwR1H4HrFyQ4HgHq7'
+    href: 'https://forms.gle/XwR1H4HrFyQ4HgHq7',
+    icon: ChatBubbleLeftRightIcon
   }
 ]
 
@@ -48,6 +60,13 @@ export default function SocialSection() {
             target={link.href.startsWith('mailto:') ? undefined : '_blank'}
             rel={link.href.startsWith('mailto:') ? undefined : 'noreferrer'}
           >
+            <span className="social-icon" aria-hidden="true">
+              {typeof link.icon === 'string' ? (
+                <Image src={link.icon} alt="" width={24} height={24} />
+              ) : (
+                <link.icon />
+              )}
+            </span>
             <span>
               <small>{link.label}</small>
               <strong>{link.value}</strong>

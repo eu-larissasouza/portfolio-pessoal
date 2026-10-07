@@ -54,14 +54,6 @@ const HeroSection = () => {
             <Link className="button button-primary" href="#palestras">
               Palcos e comunidade
             </Link>
-            <Link
-              className="button button-outline"
-              href="https://canva.link/s2hi55qkw20y1h3"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Currículo
-            </Link>
           </div>
           <nav className="hero-socials" aria-label="Redes sociais">
             {heroSocialLinks.map(link => (

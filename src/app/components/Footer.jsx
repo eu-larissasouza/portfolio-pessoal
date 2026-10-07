@@ -5,7 +5,6 @@ const Footer = () => {
     <footer className="site-footer">
       <div className="footer-inner">
         <span>© {new Date().getFullYear()} Lary Souza</span>
-        <a href="#inicio">Voltar ao início ↑</a>
       </div>
     </footer>
   )

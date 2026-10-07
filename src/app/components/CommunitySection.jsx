@@ -194,6 +194,10 @@ export default function CommunitySection() {
       <section className="section stages-section" id="palestras">
         <p className="eyebrow">Palcos e bastidores</p>
         <h2>Lugares por onde passei</h2>
+        <p className="stages-lede">
+          Selecione um evento para explorar fotos, materiais e registros
+          disponíveis.
+        </p>
         <div
           className="event-stack"
           style={{ '--event-count': moments.length }}
@@ -238,18 +242,23 @@ export default function CommunitySection() {
                         ))}
                       </ul>
                       {item.links && (
-                        <div className="event-links">
-                          {item.links.map(link => (
-                            <a
-                              className="button button-primary"
-                              key={link.label}
-                              href={link.href}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              {link.label}
-                            </a>
-                          ))}
+                        <div>
+                          <p className="event-links-label">
+                            Materiais e registros
+                          </p>
+                          <div className="event-links">
+                            {item.links.map(link => (
+                              <a
+                                className="button button-primary"
+                                key={link.label}
+                                href={link.href}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {link.label}
+                              </a>
+                            ))}
+                          </div>
                         </div>
                       )}
                     </div>

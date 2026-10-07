@@ -1,6 +1,5 @@
 'use client'
 import Link from 'next/link'
-import Image from 'next/image'
 import React, { useState } from 'react'
 import NavLink from './NavLink'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
@@ -11,6 +10,10 @@ const navLinks = [
   {
     title: 'Sobre',
     path: '#sobre'
+  },
+  {
+    title: 'Trajetória',
+    path: '#trajetoria'
   },
   {
     title: 'Palcos + comunidade',
@@ -33,17 +36,9 @@ const Navbar = () => {
     <nav className="topbar" aria-label="Navegação principal">
       <div className="topbar-inner">
         <Link href="/#inicio" className="brand" aria-label="Lary Souza, início">
-          <Image
-            className="brand-icon"
-            src="/images/lary/favicon.png"
-            alt=""
-            width={40}
-            height={40}
-            priority
-          />
           <span className="brand-name">Lary Souza</span>
         </Link>
-        <div className="mobile-menu block md:hidden">
+        <div className="mobile-menu">
           <button
             type="button"
             onClick={() => setNavbarOpen(!navbarOpen)}
@@ -60,7 +55,7 @@ const Navbar = () => {
         </div>
         <div className="desktop-menu" id="navbar">
           <ul>
-            {navLinks.map((link, index) => (
+            {navLinks.map(link => (
               <li key={link.path}>
                 <NavLink href={link.path} title={link.title} />
               </li>

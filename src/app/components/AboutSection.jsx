@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
+import ResumeViewer from './ResumeViewer'
 
 const AboutSection = () => {
   return (
@@ -60,15 +60,7 @@ const AboutSection = () => {
             <dd>Português, espanhol intermediário e inglês técnico</dd>
           </div>
         </dl>
-        <a
-          className="button button-primary about-resume"
-          href="https://canva.link/s2hi55qkw20y1h3"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Acessar meu currículo
-          <ArrowTopRightOnSquareIcon aria-hidden="true" />
-        </a>
+        <ResumeViewer />
       </aside>
     </section>
   )
