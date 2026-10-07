@@ -307,8 +307,8 @@ img {
   background: var(--pink);
 }
 .hero-social-link img {
-  width: 23px;
-  height: 23px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
 }
 .button {
