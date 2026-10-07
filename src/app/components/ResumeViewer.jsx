@@ -43,7 +43,7 @@ export default function ResumeViewer() {
           </header>
           <iframe
             className="resume-frame"
-            src={resumeUrl}
+            src={`${resumeUrl}#view=FitH`}
             title="Currículo de Larissa Souza"
           />
           <a

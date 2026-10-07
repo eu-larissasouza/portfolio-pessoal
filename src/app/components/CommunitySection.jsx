@@ -1,11 +1,36 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { PhotoIcon } from '@heroicons/react/24/outline'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 
 const moments = [
+  {
+    title: 'DEV.to',
+    year: 'Construção contínua',
+    role: 'Escrita técnica · Engenharia de software',
+    heading: (
+      <>
+        Compartilhar aprendizados também faz parte da <em>jornada</em>
+      </>
+    ),
+    summary:
+      'Um espaço para compartilhar aprendizados e experiências em tecnologia.',
+    description:
+      'Ainda estou preparando os primeiros artigos. A ideia é publicar mensalmente e também sempre que surgir algo bacana para compartilhar.',
+    topics: ['Escrita técnica', 'Engenharia de software', 'Comunidade'],
+    image: '/images/lary/setup-devto.jpg',
+    alt: 'Meu setup de trabalho com notebook, teclado e iluminação roxa',
+    imageCaption: 'Meu espaço de escrita',
+    links: [
+      {
+        label: 'Acessar perfil',
+        href: 'https://dev.to/larysouza'
+      }
+    ],
+    color: 'purple'
+  },
   {
     title: 'TDC São Paulo 2026',
     year: 'Setembro de 2026',
@@ -42,6 +67,10 @@ const moments = [
         label: 'Repositório',
         href: 'https://github.com/eu-larissasouza/tdc2026-uma-feature-4-microsservicos'
       }
+      /*{
+        label: 'Artigo Técnico',
+        href: 'https://github.com/eu-larissasouza/tdc2026-uma-feature-4-microsservicos'
+      }*/
     ],
     color: 'orange'
   },
@@ -183,10 +212,70 @@ const eventPhotos = [
 
 export default function CommunitySection() {
   const [active, setActive] = useState(0)
+  const activeMomentRef = useRef(null)
+  const shouldScrollToMomentRef = useRef(false)
+
+  useEffect(() => {
+    if (!shouldScrollToMomentRef.current) return
+
+    shouldScrollToMomentRef.current = false
+    const activeMoment = activeMomentRef.current
+    if (!activeMoment) return
+
+    const scrollToActiveMoment = () => {
+      const stickyHeaderHeight =
+        document.querySelector('.topbar')?.getBoundingClientRect().height ?? 0
+      const targetTop =
+        window.scrollY +
+        activeMoment.getBoundingClientRect().top -
+        stickyHeaderHeight -
+        10
+
+      window.scrollTo({
+        top: Math.max(0, targetTop),
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ? 'auto'
+          : 'smooth'
+      })
+    }
+    const activeCard = activeMoment.closest('.event-card')
+
+    if (!activeCard) {
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(scrollToActiveMoment)
+      })
+      return
+    }
+
+    const handleTransitionEnd = event => {
+      if (event.target === activeCard && event.propertyName === 'transform') {
+        window.clearTimeout(fallbackTimeout)
+        activeCard.removeEventListener('transitionend', handleTransitionEnd)
+        scrollToActiveMoment()
+      }
+    }
+    const fallbackTimeout = window.setTimeout(() => {
+      activeCard.removeEventListener('transitionend', handleTransitionEnd)
+      scrollToActiveMoment()
+    }, 500)
+
+    activeCard.addEventListener('transitionend', handleTransitionEnd)
+
+    return () => {
+      window.clearTimeout(fallbackTimeout)
+      activeCard.removeEventListener('transitionend', handleTransitionEnd)
+    }
+  }, [active])
+
+  const selectMoment = index => {
+    if (index === active) return
+
+    shouldScrollToMomentRef.current = true
+    setActive(index)
+  }
+
   const changeMoment = direction => {
-    setActive(
-      current => (current + direction + moments.length) % moments.length
-    )
+    selectMoment((active + direction + moments.length) % moments.length)
   }
 
   return (
@@ -221,14 +310,14 @@ export default function CommunitySection() {
                   type="button"
                   aria-pressed={isActive}
                   aria-label={`Ver momento: ${item.title}`}
-                  onClick={() => setActive(index)}
+                  onClick={() => selectMoment(index)}
                 >
                   <span>{item.title}</span>
                   <small>{item.year}</small>
                 </button>
                 {isActive && (
-                  <div className="event-body" aria-live="polite">
-                    <div className="event-copy">
+                  <div className="event-body">
+                    <div className="event-copy" ref={activeMomentRef}>
                       <p className="event-kicker">
                         {item.title} <span>{item.year}</span>
                       </p>
@@ -263,23 +352,36 @@ export default function CommunitySection() {
                       )}
                     </div>
                     {item.image ? (
-                      <figure className="event-media">
+                      <figure
+                        className={`event-media${item.imageCaption ? ' event-media--portrait' : ''}`}
+                      >
                         <Image
                           src={item.image}
                           alt={item.alt}
                           fill
                           sizes="(max-width: 820px) 100vw, 38vw"
                         />
+                        {item.imageCaption && (
+                          <figcaption className="event-media-caption">
+                            {item.imageCaption}
+                          </figcaption>
+                        )}
                       </figure>
                     ) : (
                       <figure
                         className="event-media event-photo-slot"
                         role="img"
-                        aria-label={`Espaço reservado para foto: ${item.title}`}
+                        aria-label={`${item.visualCaption || 'Espaço reservado para foto'}: ${item.title}`}
                       >
-                        <PhotoIcon aria-hidden="true" />
+                        {item.visualLabel ? (
+                          <strong className="event-platform-mark">
+                            {item.visualLabel}
+                          </strong>
+                        ) : (
+                          <PhotoIcon aria-hidden="true" />
+                        )}
                         <figcaption>
-                          <span>Registro visual</span>
+                          <span>{item.visualCaption || 'Registro visual'}</span>
                           <strong>{item.title}</strong>
                         </figcaption>
                       </figure>
