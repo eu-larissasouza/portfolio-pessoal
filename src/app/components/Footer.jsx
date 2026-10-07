@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
-        <span>© {new Date().getFullYear()} Lary Souza</span>
+        <span>Feito com Amor © {new Date().getFullYear()} Lary Souza</span>
       </div>
     </footer>
   )

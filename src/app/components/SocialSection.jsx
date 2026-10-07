@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import {
   ChatBubbleLeftRightIcon,
-  EnvelopeIcon
+  EnvelopeIcon,
+  ArrowUpRightIcon
 } from '@heroicons/react/24/outline'
 
 const links = [
@@ -72,7 +73,7 @@ export default function SocialSection() {
               <strong>{link.value}</strong>
             </span>
             <span className="social-arrow" aria-hidden="true">
-              ↗
+              <ArrowUpRightIcon />
             </span>
           </a>
         ))}

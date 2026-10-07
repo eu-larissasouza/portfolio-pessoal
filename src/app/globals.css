@@ -399,6 +399,7 @@ img {
 }
 .about-aside {
   min-width: 0;
+  margin-top: 2.25rem;
 }
 .about-resume {
   margin-top: 22px;
@@ -1041,6 +1042,10 @@ img {
   filter: var(--social-icon-filter);
   object-fit: contain;
 }
+.social-icon img {
+  width: 32px;
+  height: 32px;
+}
 .social-links a > span:nth-child(2) {
   min-width: 0;
 }
@@ -1066,9 +1071,15 @@ img {
   font-weight: 500;
 }
 .social-arrow {
+  width: 24px;
+  height: 24px;
   flex: none;
   margin-left: auto;
-  font-size: 1.45rem;
+}
+.social-arrow svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .closing-panel {
   position: relative;
@@ -1093,9 +1104,9 @@ img {
   bottom: -90px;
   width: min(420px, 70vw);
   aspect-ratio: 1;
-  background: url('/images/lary/losangos.svg') center / 100% 100% no-repeat;
-  opacity: 0.3;
-  mask-image: linear-gradient(to top left, #000 10%, transparent 78%);
+  background: url('/images/lary/losangos-bgremove.svg') center / 100% 100%
+    no-repeat;
+  mask-image: linear-gradient(to top left, #000 30%, transparent 80%);
 }
 .closing-panel > p {
   margin: 0;
@@ -1109,6 +1120,8 @@ img {
   margin: 0;
   font: 700 clamp(2.8rem, 6.5vw, 5.5rem)/0.98 var(--font-title);
   text-transform: uppercase;
+  -webkit-text-stroke: 0.03em currentColor;
+  letter-spacing: -0.02=3em;
 }
 .closing-panel h3 span {
   color: #fff6e9;
@@ -1309,6 +1322,9 @@ img {
     grid-template-columns: minmax(0, 1fr);
     gap: 34px;
   }
+  .about-aside {
+    margin-top: 0;
+  }
   .trajectory-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 42px;
@@ -1458,6 +1474,83 @@ img {
   }
   .footer-inner {
     width: calc(100% - 36px);
+  }
+}
+@media (min-width: 1200px) {
+  body {
+    font-size: clamp(1rem, calc(0.82rem + 0.3vw), 1.125rem);
+  }
+  .brand-name {
+    font-size: clamp(0.9375rem, calc(0.7575rem + 0.3vw), 1.0625rem);
+  }
+  .nav-link {
+    font-size: clamp(0.875rem, calc(0.695rem + 0.3vw), 1rem);
+  }
+  .hero-kicker,
+  .hero-role {
+    font-size: clamp(0.82rem, calc(0.64rem + 0.3vw), 0.95rem);
+  }
+  .button {
+    font-size: clamp(0.9rem, calc(0.72rem + 0.3vw), 1rem);
+  }
+  .eyebrow {
+    font-size: clamp(0.8rem, calc(0.62rem + 0.3vw), 0.9rem);
+  }
+  .about-copy .about-lead {
+    font-size: clamp(1.12rem, calc(0.94rem + 0.3vw), 1.25rem);
+  }
+  .trajectory-column > h3 {
+    font-size: clamp(1.6rem, calc(1.42rem + 0.3vw), 1.75rem);
+  }
+  .trajectory-item h4 {
+    font-size: clamp(0.96rem, calc(0.78rem + 0.3vw), 1.06rem);
+  }
+  .trajectory-period,
+  .facts dt,
+  .event-tab small,
+  .event-role,
+  .topic-list li,
+  .event-pager > span,
+  .event-gallery figcaption,
+  .footer-inner {
+    font-size: clamp(0.75rem, calc(0.57rem + 0.3vw), 0.875rem);
+  }
+  .trajectory-organization,
+  .trajectory-description,
+  .facts dd,
+  .portrait span,
+  .stages-lede,
+  .event-controls > p {
+    font-size: clamp(0.9rem, calc(0.72rem + 0.3vw), 1rem);
+  }
+  .event-tab,
+  .event-links .button {
+    font-size: clamp(0.82rem, calc(0.64rem + 0.3vw), 0.94rem);
+  }
+  .event-kicker {
+    font-size: clamp(0.78rem, calc(0.6rem + 0.3vw), 0.9rem);
+  }
+  .event-summary {
+    font-size: clamp(1rem, calc(0.82rem + 0.3vw), 1.1rem);
+  }
+  .event-description,
+  .focus-item p {
+    font-size: clamp(0.95rem, calc(0.77rem + 0.3vw), 1.05rem);
+  }
+  .event-links-label,
+  .closing-panel > p,
+  .signature {
+    font-size: clamp(0.8rem, calc(0.62rem + 0.3vw), 0.9rem);
+  }
+  .focus-number {
+    font-size: clamp(0.82rem, calc(0.64rem + 0.3vw), 0.92rem);
+  }
+  .focus-number small,
+  .social-links small {
+    font-size: clamp(0.75rem, calc(0.57rem + 0.3vw), 0.86rem);
+  }
+  .social-links strong {
+    font-size: clamp(0.98rem, calc(0.8rem + 0.3vw), 1.08rem);
   }
 }
 @media (prefers-reduced-motion: reduce) {
