@@ -1,3 +1,5 @@
+'use client'
+import { useTranslate } from './LanguageProvider'
 import Image from 'next/image'
 
 const focusAreas = [
@@ -37,10 +39,11 @@ const focusAreas = [
 ]
 
 export default function FocusSection() {
+  const t = useTranslate()
   return (
     <section className="section focus-section" id="areas">
-      <p className="eyebrow">Áreas</p>
-      <h2>Onde eu atuo</h2>
+      <p className="eyebrow">{t('Áreas')}</p>
+      <h2>{t('Onde eu atuo')}</h2>
       <div className="focus-grid">
         {focusAreas.map(area => (
           <article
@@ -61,10 +64,10 @@ export default function FocusSection() {
             </span>
             <span className="focus-number">
               {area.number}
-              {area.next && <small>Próximo passo</small>}
+              {area.next && <small>{t('Próximo passo')}</small>}
             </span>
-            <h3>{area.title}</h3>
-            <p>{area.description}</p>
+            <h3>{t(area.title)}</h3>
+            <p>{t(area.description)}</p>
           </article>
         ))}
       </div>

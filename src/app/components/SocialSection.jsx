@@ -1,3 +1,5 @@
+'use client'
+import { useTranslate } from './LanguageProvider'
 import Image from 'next/image'
 import {
   ChatBubbleLeftRightIcon,
@@ -45,14 +47,12 @@ const links = [
 ]
 
 export default function SocialSection() {
+  const t = useTranslate()
   return (
     <section className="section social-section" id="redes">
-      <p className="eyebrow">Conecte-se comigo</p>
-      <h2>Acompanhe a minha jornada</h2>
-      <p className="social-lede">
-        Bastidores, tecnologia e conversas sobre construir software e
-        comunidade.
-      </p>
+      <p className="eyebrow">{t('Conecte-se comigo')}</p>
+      <h2>{t('Acompanhe a minha jornada')}</h2>
+      <p className="social-lede">{t('Bastidores, tecnologia e conversas sobre construir software e comunidade.')}</p>
       <div className="social-links">
         {links.map(link => (
           <a
@@ -69,8 +69,8 @@ export default function SocialSection() {
               )}
             </span>
             <span>
-              <small>{link.label}</small>
-              <strong>{link.value}</strong>
+              <small>{t(link.label)}</small>
+              <strong>{t(link.value)}</strong>
             </span>
             <span className="social-arrow" aria-hidden="true">
               <ArrowUpRightIcon />
@@ -79,12 +79,12 @@ export default function SocialSection() {
         ))}
       </div>
       <div className="closing-panel">
-        <p>Obrigada por passar por aqui</p>
+        <p>{t('Obrigada por passar por aqui')}</p>
         <h3>
-          Aprecie cada momento da sua <span>jornada.</span>
+          {t('Aprecie cada momento da sua jornada.')}
         </h3>
         <strong className="signature">
-          Keep building. Keep learning. Keep sharing.
+          {t('Keep building. Keep learning. Keep sharing.')}
         </strong>
       </div>
     </section>

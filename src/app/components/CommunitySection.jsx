@@ -1,4 +1,5 @@
 'use client'
+import { useTranslate } from './LanguageProvider'
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
@@ -10,11 +11,7 @@ const moments = [
     title: 'DEV.to',
     year: 'Construção contínua',
     role: 'Escrita técnica · Engenharia de software',
-    heading: (
-      <>
-        Compartilhar aprendizados também faz parte da <em>jornada</em>
-      </>
-    ),
+    heading: 'Compartilhar aprendizados também faz parte da jornada',
     summary:
       'Um espaço para compartilhar aprendizados e experiências em tecnologia.',
     description:
@@ -35,22 +32,9 @@ const moments = [
     title: 'TDC São Paulo 2026',
     year: 'Setembro de 2026',
     role: 'Palestrante | Painelista',
-    heading: (
-      <>
-        Uma feature, <em>quatro</em> microsserviços
-      </>
-    ),
+    heading: 'Uma feature, quatro microsserviços',
     summary: 'Trilha Arquitetura Java · The Developer’s Conference',
-    description: (
-      <>
-        Compartilhei aprendizados de uma feature que atravessa quatro
-        microsserviços, com Server-Driven UI, programação reativa e um bug real
-        de <code>Mono.zip()</code> num fan-out de sete fontes de dados. Também
-        integrei o painel “Arquitetura Java em Tempos de IA: fundamentos,
-        contexto e decisões que ainda importam”. Entre palestras, revi pessoas
-        queridas e fiz novas conexões.
-      </>
-    ),
+    description: 'Compartilhei aprendizados de uma feature que atravessa quatro microsserviços, com Server-Driven UI, programação reativa e um bug real de Mono.zip() num fan-out de sete fontes de dados. Também integrei o painel “Arquitetura Java em Tempos de IA: fundamentos, contexto e decisões que ainda importam”. Entre palestras, revi pessoas queridas e fiz novas conexões.',
     topics: ['SDUI', 'Java', 'Programação reativa', 'Feature flag'],
     image: '/images/lary/TDCSP2026_palestra.jpg',
     alt: 'Lary Souza participando do painel no TDC São Paulo 2026',
@@ -78,12 +62,7 @@ const moments = [
     title: 'TDC São Paulo 2025',
     year: 'Setembro de 2025',
     role: 'Painelista',
-    heading: (
-      <>
-        Além da sala de aula: como a comunidade tech transforma a jornada
-        universitária
-      </>
-    ),
+    heading: 'Além da sala de aula: como a comunidade tech transforma a jornada universitária',
     summary: 'Community Lounge · The Developer’s Conference',
     description:
       'Participei do painel “Além da Sala de Aula: Como a Comunidade Tech Transforma a Jornada Universitária”, no Community Lounge do TDC São Paulo 2025.',
@@ -102,11 +81,7 @@ const moments = [
     title: 'IWD São Paulo 2025',
     year: 'Abril de 2025',
     role: 'Voluntária · Social Media · GDG São Paulo',
-    heading: (
-      <>
-        IWD São Paulo: <em>Redefinir o possível</em>
-      </>
-    ),
+    heading: 'IWD São Paulo: Redefinir o possível',
     summary: 'Cobertura e conteúdo em tempo real para a comunidade.',
     description:
       'Atuei como voluntária nas mídias sociais do GDG São Paulo, registrando momentos e editando vídeos em tempo real durante o IWD São Paulo 2025.',
@@ -125,11 +100,7 @@ const moments = [
     title: 'COMPWEEK · UNASP 2024',
     year: 'Outubro de 2024',
     role: 'Palestrante',
-    heading: (
-      <>
-        Codificando um <em>mundo melhor</em>
-      </>
-    ),
+    heading: 'Codificando um mundo melhor',
     summary:
       'O papel de quem desenvolve na criação de tecnologia mais inclusiva.',
     description:
@@ -161,11 +132,7 @@ const moments = [
     title: 'Campus Party 16 · CPBR16',
     year: 'Julho de 2024',
     role: 'Voluntária · GDG São Paulo · Palco Dev',
-    heading: (
-      <>
-        Comunidade em movimento no <em>Palco Dev</em>
-      </>
-    ),
+    heading: 'Comunidade em movimento no Palco Dev',
     summary:
       'Apoio à comunidade GDG São Paulo durante a Campus Party Brasil 16.',
     description:
@@ -211,6 +178,7 @@ const eventPhotos = [
 ]
 
 export default function CommunitySection() {
+  const t = useTranslate()
   const [active, setActive] = useState(0)
   const activeMomentRef = useRef(null)
   const shouldScrollToMomentRef = useRef(false)
@@ -281,16 +249,13 @@ export default function CommunitySection() {
   return (
     <>
       <section className="section stages-section" id="palestras">
-        <p className="eyebrow">Palcos e bastidores</p>
-        <h2>Lugares por onde passei</h2>
-        <p className="stages-lede">
-          Selecione um evento para explorar fotos, materiais e registros
-          disponíveis.
-        </p>
+        <p className="eyebrow">{t('Palcos e bastidores')}</p>
+        <h2>{t('Lugares por onde passei')}</h2>
+        <p className="stages-lede">{t('Selecione um evento para explorar fotos, materiais e registros disponíveis.')}</p>
         <div
           className="event-stack"
           style={{ '--event-count': moments.length }}
-          aria-label="Momentos em palestras e comunidade"
+          aria-label={t('Momentos em palestras e comunidade')}
         >
           {moments.map((item, index) => {
             const distance = (index - active + moments.length) % moments.length
@@ -309,11 +274,11 @@ export default function CommunitySection() {
                   className="event-tab"
                   type="button"
                   aria-pressed={isActive}
-                  aria-label={`Ver momento: ${item.title}`}
+                  aria-label={`${t('Ver momento')}: ${item.title}`}
                   onClick={() => selectMoment(index)}
                 >
                   <span>{item.title}</span>
-                  <small>{item.year}</small>
+                  <small>{t(item.year)}</small>
                 </button>
                 {isActive && (
                   <div className="event-body">
@@ -321,19 +286,19 @@ export default function CommunitySection() {
                       <p className="event-kicker">
                         {item.title} <span>{item.year}</span>
                       </p>
-                      <p className="event-role">{item.role}</p>
-                      <h3>{item.heading}</h3>
-                      <p className="event-summary">{item.summary}</p>
-                      <p className="event-description">{item.description}</p>
-                      <ul className="topic-list" aria-label="Temas">
+                      <p className="event-role">{t(item.role)}</p>
+                      <h3>{t(item.heading)}</h3>
+                      <p className="event-summary">{t(item.summary)}</p>
+                      <p className="event-description">{t(item.description)}</p>
+                      <ul className="topic-list" aria-label={t('Temas')}>
                         {item.topics.map(topic => (
-                          <li key={topic}>{topic}</li>
+                          <li key={topic}>{t(topic)}</li>
                         ))}
                       </ul>
                       {item.links && (
                         <div>
                           <p className="event-links-label">
-                            Materiais e registros
+                            {t('Materiais e registros')}
                           </p>
                           <div className="event-links">
                             {item.links.map(link => (
@@ -357,13 +322,13 @@ export default function CommunitySection() {
                       >
                         <Image
                           src={item.image}
-                          alt={item.alt}
+                          alt={t(item.alt)}
                           fill
                           sizes="(max-width: 820px) 100vw, 38vw"
                         />
                         {item.imageCaption && (
                           <figcaption className="event-media-caption">
-                            {item.imageCaption}
+                            {t(item.imageCaption)}
                           </figcaption>
                         )}
                       </figure>
@@ -371,7 +336,7 @@ export default function CommunitySection() {
                       <figure
                         className="event-media event-photo-slot"
                         role="img"
-                        aria-label={`${item.visualCaption || 'Espaço reservado para foto'}: ${item.title}`}
+                        aria-label={`${t(item.visualCaption || 'Espaço reservado para foto')}: ${item.title}`}
                       >
                         {item.visualLabel ? (
                           <strong className="event-platform-mark">
@@ -381,7 +346,7 @@ export default function CommunitySection() {
                           <PhotoIcon aria-hidden="true" />
                         )}
                         <figcaption>
-                          <span>{item.visualCaption || 'Registro visual'}</span>
+                          <span>{t(item.visualCaption || 'Registro visual')}</span>
                           <strong>{item.title}</strong>
                         </figcaption>
                       </figure>
@@ -393,11 +358,11 @@ export default function CommunitySection() {
           })}
         </div>
         <div className="event-controls">
-          <p>Um pouco do que construí e aprendi em cada encontro.</p>
+          <p>{t('Um pouco do que construí e aprendi em cada encontro.')}</p>
           <div className="event-pager">
             <button
               type="button"
-              aria-label="Momento anterior"
+              aria-label={t('Momento anterior')}
               onClick={() => changeMoment(-1)}
             >
               <ChevronLeftIcon />
@@ -408,7 +373,7 @@ export default function CommunitySection() {
             </span>
             <button
               type="button"
-              aria-label="Próximo momento"
+              aria-label={t('Próximo momento')}
               onClick={() => changeMoment(1)}
             >
               <ChevronRightIcon />
@@ -423,22 +388,16 @@ export default function CommunitySection() {
       >
         <div className="events-intro">
           <div className="events-intro-copy">
-            <p className="eyebrow">Tecnologia, pessoas e conexões</p>
+            <p className="eyebrow">{t('Tecnologia, pessoas e conexões')}</p>
             <h2 id="events-title">
-              Aprender junto, criar conexões que permanecem.
+              {t('Aprender junto, criar conexões que permanecem.')}
             </h2>
-            <p className="events-lede">
-              Em eventos, aprendo nas palestras e também nas conversas entre uma
-              sessão e outra. Conheço pessoas novas, reencontro quem já faz
-              parte da minha trajetória e troco experiências com profissionais
-              que admiro. Cada encontro amplia meu olhar sobre tecnologia e
-              comunidade, e geram conexões que vão muito além de um evento.
-            </p>
+            <p className="events-lede">{t('Em eventos, aprendo nas palestras e também nas conversas entre uma sessão e outra. Conheço pessoas novas, reencontro quem já faz parte da minha trajetória e troco experiências com profissionais que admiro. Cada encontro amplia meu olhar sobre tecnologia e comunidade, e geram conexões que vão muito além de um evento.')}</p>
           </div>
           <figure className="events-notebook">
             <Image
               src="/images/lary/computer-illustration.png"
-              alt="Ilustração de um notebook com código e uma xícara de café"
+              alt={t('Ilustração de um notebook com código e uma xícara de café')}
               width={439}
               height={285}
               sizes="(max-width: 820px) 80vw, 30vw"
@@ -447,12 +406,12 @@ export default function CommunitySection() {
         </div>
         <ul className="event-gallery">
           {eventPhotos.map((photo, index) => (
-            <li key={photo.caption}>
+            <li key={t(photo.caption)}>
               <figure>
                 <div className="gallery-image">
                   <Image
                     src={photo.src}
-                    alt={photo.alt}
+                    alt={t(photo.alt)}
                     fill
                     sizes="(max-width: 700px) 48vw, 24vw"
                   />

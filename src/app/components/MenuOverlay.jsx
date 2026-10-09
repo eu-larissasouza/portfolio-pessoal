@@ -1,5 +1,7 @@
 import React from 'react'
 import NavLink from './NavLink'
+import LanguageToggle from './LanguageToggle'
+import ThemeToggle from './ThemeToggle'
 
 const MenuOverlay = ({ links, onNavigate }) => {
   return (
@@ -9,6 +11,10 @@ const MenuOverlay = ({ links, onNavigate }) => {
           <NavLink href={link.path} title={link.title} />
         </li>
       ))}
+      <li className="mobile-menu-settings">
+        <LanguageToggle />
+        <ThemeToggle />
+      </li>
     </ul>
   )
 }

@@ -1,4 +1,5 @@
 'use client'
+import { useLanguage, useTranslate } from './LanguageProvider'
 
 import { useRef } from 'react'
 import {
@@ -10,6 +11,8 @@ const resumeUrl =
   '/docs/Curr%C3%ADculo%20-%20Larissa%20Alves%20de%20Souza.pdf'
 
 export default function ResumeViewer() {
+  const t = useTranslate()
+  const { language } = useLanguage()
   const dialogRef = useRef(null)
 
   return (
@@ -18,9 +21,7 @@ export default function ResumeViewer() {
         className="button button-primary about-resume"
         type="button"
         onClick={() => dialogRef.current?.showModal()}
-      >
-        Ver currículo
-      </button>
+      >{t('Ver currículo')}</button>
       <dialog
         className="resume-dialog"
         ref={dialogRef}
@@ -30,12 +31,13 @@ export default function ResumeViewer() {
         }}
       >
         <div className="resume-dialog-content">
+          {language !== 'pt' && <p className="resume-language-note">{t('Currículo disponível apenas em português.')}</p>}
           <header className="resume-dialog-header">
-            <h2 id="resume-title">Currículo · Larissa Souza</h2>
+            <h2 id="resume-title">{t('Currículo · Larissa Souza')}</h2>
             <button
               className="resume-dialog-close"
               type="button"
-              aria-label="Fechar currículo"
+              aria-label={t('Fechar currículo')}
               onClick={() => dialogRef.current?.close()}
             >
               <XMarkIcon aria-hidden="true" />
@@ -44,7 +46,7 @@ export default function ResumeViewer() {
           <iframe
             className="resume-frame"
             src={`${resumeUrl}#view=FitH`}
-            title="Currículo de Larissa Souza"
+            title={t('Currículo de Larissa Souza')}
           />
           <a
             className="resume-dialog-link"
@@ -52,7 +54,7 @@ export default function ResumeViewer() {
             target="_blank"
             rel="noreferrer"
           >
-            Abrir PDF em outra aba
+            {t('Abrir PDF em outra aba')}
             <ArrowTopRightOnSquareIcon aria-hidden="true" />
           </a>
         </div>

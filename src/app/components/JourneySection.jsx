@@ -1,3 +1,5 @@
+'use client'
+import { useTranslate } from './LanguageProvider'
 const experiences = [
   {
     role: 'Software Engineer',
@@ -76,45 +78,46 @@ function Timeline({ items, renderItem }) {
 }
 
 export default function JourneySection() {
+  const t = useTranslate()
   return (
     <section className="section trajectory-section" id="trajetoria">
-      <p className="eyebrow">Trajetória</p>
-      <h2>Experiência e formação.</h2>
+      <p className="eyebrow">{t('Trajetória')}</p>
+      <h2>{t('Experiência e formação.')}</h2>
       <div className="trajectory-grid">
         <div className="trajectory-column">
-          <h3>Experiência profissional</h3>
+          <h3>{t('Experiência profissional')}</h3>
           <Timeline
             items={experiences}
             renderItem={experience => (
               <>
                 <div className="trajectory-item-heading">
-                  <h4>{experience.role}</h4>
-                  <span className="trajectory-period">{experience.period}</span>
+                  <h4>{t(experience.role)}</h4>
+                  <span className="trajectory-period">{t(experience.period)}</span>
                 </div>
                 <p className="trajectory-organization">
-                  {experience.organization}
+                  {t(experience.organization)}
                 </p>
                 <p className="trajectory-description">
-                  {experience.description}
+                  {t(experience.description)}
                 </p>
               </>
             )}
           />
         </div>
         <div className="trajectory-column">
-          <h3>Formação acadêmica</h3>
+          <h3>{t('Formação acadêmica')}</h3>
           <Timeline
             items={education}
             renderItem={course => (
               <>
                 <div className="trajectory-item-heading">
-                  <h4>{course.course}</h4>
-                  <span className="trajectory-period">{course.period}</span>
+                  <h4>{t(course.course)}</h4>
+                  <span className="trajectory-period">{t(course.period)}</span>
                 </div>
-                <p className="trajectory-organization">{course.institution}</p>
+                <p className="trajectory-organization">{t(course.institution)}</p>
                 {course.description && (
                   <p className="trajectory-description">
-                    {course.description}
+                    {t(course.description)}
                   </p>
                 )}
               </>

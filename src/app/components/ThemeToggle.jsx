@@ -2,9 +2,12 @@
 
 import { useEffect, useState } from 'react'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
+import { useLanguage } from './LanguageProvider'
 
 export default function ThemeToggle() {
   const [mode, setMode] = useState('light')
+  const { language } = useLanguage()
+  const modeLabel = language === 'en' ? (mode === 'dark' ? 'light' : 'dark') : language === 'es' ? (mode === 'dark' ? 'claro' : 'oscuro') : (mode === 'dark' ? 'claro' : 'escuro')
 
   useEffect(() => {
     let savedMode
@@ -34,7 +37,7 @@ export default function ThemeToggle() {
       className="theme-toggle"
       type="button"
       onClick={toggleMode}
-      aria-label={`Ativar tema ${mode === 'dark' ? 'claro' : 'escuro'}`}
+      aria-label={language === 'en' ? `Switch to ${modeLabel} theme` : language === 'es' ? `Activar tema ${modeLabel}` : `Ativar tema ${modeLabel}`}
     >
       {mode === 'dark' ? <SunIcon /> : <MoonIcon />}
     </button>

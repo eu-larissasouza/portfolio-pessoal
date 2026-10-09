@@ -1,9 +1,11 @@
 'use client'
+import { useTranslate } from './LanguageProvider'
 
 import { useEffect, useState } from 'react'
 import { ArrowUpIcon } from '@heroicons/react/24/outline'
 
 export default function BackToTop() {
+  const t = useTranslate()
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -17,8 +19,8 @@ export default function BackToTop() {
     <button
       className={`back-to-top${visible ? ' is-visible' : ''}`}
       type="button"
-      aria-label="Voltar ao início"
-      title="Voltar ao início"
+      aria-label={t('Voltar ao início')}
+      title={t('Voltar ao início')}
       tabIndex={visible ? 0 : -1}
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     >
